@@ -227,7 +227,7 @@ ion-icon {
 }
 
 .city-info {
-    height: 56%;
+    height: 50%;
     overflow-y: auto;
 }
 
@@ -348,7 +348,7 @@ footer {
   .city-info-section,
   .city-info,
   .white-triangle {
-    width: 100%;
+    width: 96%;
   }
 }
 
