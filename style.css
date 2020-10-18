@@ -104,6 +104,14 @@ section {
     text-align: center;
 }
 
+.days-section {
+    height: 70vh;
+}
+
+.city-info-section {
+    height: 100vh;
+}
+
 /* Local info section */
 
 .local-info {
@@ -208,12 +216,6 @@ ion-icon {
 
 /* City Info Section */
 
-.days-section {
-    height: 70vh;
-}
-.city-info-section {
-    height: 70vh;
-}
 
 .city-info,
 .white-triangle {
@@ -267,7 +269,6 @@ footer {
     font-size: 1.6rem;
     text-align: center;
     padding-top: 1rem;
-    margin: auto 0 auto 0;
 }
 
 /* Colors Manager */
@@ -303,7 +304,8 @@ footer {
     background-color: #808284;
 }
 
-@keyframes rain {
+
+/* @keyframes rain {
     from {
         top: 0;
         left: 50vh;
@@ -316,7 +318,16 @@ footer {
 
 }
 
+.rain-drop {
+    position: absolute;
+    height: 1.5rem;
+    width: 0;
+    border: 2px solid black;
 
+    animation-name: rain;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+} */
 
 /* will create spacing in case of touchscreen*/
 @media (pointer: Coarse), (max-width: 60em) { 
@@ -339,13 +350,3 @@ footer {
   }
 }
 
-.rain-drop {
-    position: absolute;
-    height: 1.5rem;
-    width: 0;
-    border: 2px solid black;
-
-    animation-name: rain;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-}
