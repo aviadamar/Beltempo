@@ -117,7 +117,6 @@ section {
 .local-info {
     padding-top: 8rem;
     color: white;
-    padding-top: -2rem;
 }
 
 .city-name,
@@ -138,6 +137,9 @@ section {
 
 /* Form */
 
+form {
+    padding-top: 4rem;
+}
 .search,
 .search-button {
 
