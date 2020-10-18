@@ -41,7 +41,7 @@ sup {
 
 .social-logo {
     font-size: 2.6rem;
-    margin: 1rem 1rem 0 0;
+    margin: 0 1rem 0 0;
 }
 
 /* -- Navigation Bar -- */
@@ -371,5 +371,9 @@ footer div {
   footer div {
     flex: 1 0 100%;
  }
+
+ .social-logo {
+    margin: 1rem 1rem 0 0;
+}
 }
 
