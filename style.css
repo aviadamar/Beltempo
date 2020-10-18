@@ -40,13 +40,8 @@ sup {
 }
 
 .social-logo {
-    color: white;
     font-size: 2.6rem;
-    margin-right: 2rem;
-}
-
-.social-logos {
-    padding-top: 3rem;
+    margin: 1rem 1rem 0 0;
 }
 
 /* -- Navigation Bar -- */
@@ -282,13 +277,16 @@ p span {
 /* -- Footer -- */
 
 footer {
-    display: grid;
-    grid-template-columns: repeat(3, 2fr);
+    display: flex;
+    flex-flow: row wrap;
     width: 100%;
-    height: 5rem;
     font-size: 1.6rem;
     text-align: center;
     padding-top: 1rem;
+}
+
+footer div {
+    flex: 1 0 33%;
 }
 
 
@@ -368,5 +366,10 @@ footer {
   .white-triangle {
     width: 96%;
   }
+
+  
+  footer div {
+    flex: 1 0 100%;
+ }
 }
 
