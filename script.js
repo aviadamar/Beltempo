@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var menu = document.querySelector("#hidden-menu");
             if (menu.style.display == 'flex') {
                 menu.style.display = 'none';
+                document.getElementById("more-info-mark").style.display = "block";
             }
             else {
                 menu.style.display = 'flex'
+                document.getElementById("more-info-mark").style.display = "none";
             }
         };
 });
