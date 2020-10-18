@@ -208,6 +208,13 @@ ion-icon {
 
 /* City Info Section */
 
+.days-section {
+    height: 70vh;
+}
+.city-info-section {
+    height: 70vh;
+}
+
 .city-info,
 .white-triangle {
     width: 50%;
@@ -255,12 +262,11 @@ p span {
 /* -- Footer -- */
 
 footer {
-    position: fixed;
     width: 100%;
-    bottom: 0;
-    height: 3rem;
+    height: 5rem;
     font-size: 1.6rem;
     text-align: center;
+    padding-top: 1rem;
     margin: auto 0 auto 0;
 }
 
