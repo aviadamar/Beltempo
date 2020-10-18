@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Beltempo - Weather everywhere</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="rain">
+    <i class="rain-drop"></i>
+    <nav class="rain">
+        <a href="#">
+            <header> BELTEMPO. </header>
+        </a>
+
+        <img src=" static/img/nav_bar.svg" alt="Navigation Bar" id="hamburger-bar">
+
+        <ul class="black-white one-on-two" id="hidden-menu">
+            <li onmouseover="show('#why')" onmouseout=" hide('#why')"> WHY?</li>
+            <li onmouseover="show('#how')" onmouseout=" hide('#how')"> HOW?</li>
+            <li onmouseover="show('#who')" onmouseout=" hide('#who')"> WHO?</li>
+        </ul>
+
+        <p class="white-black one-on-two info-text" id="why">Lorem ipsum dolor sit amet consectetur adipisicing
+            elit.
+            Nostrum
+            praesentium fugiat illum accusamus? Distinctio iusto quia officiis earum consequatur ex dolores, quam
+            temporibus quos! Iure consequuntur perspiciatis nihil officiis quasi!
+        </p>
+        <p class="white-black one-on-two info-text" id="how">Lorem ipsum dolor sit amet consectetur, adipisicing
+            elit. Earum, animi sapiente officiis, temporibus provident laudantium, accusamus ab nostrum nam
+            distinctio quo laboriosam facere inventore illum odit reiciendis ipsum quia fuga.
+        </p>
+        <p class="white-black one-on-two info-text" id="who">Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit.
+            Expedita
+            ullam asperiores eveniet tempora amet labore nemo, dolore magni reiciendis suscipit quae officia, rem,
+            obcaecati nisi architecto. Repudiandae nemo temporibus ipsa.
+        </p>
+    </nav>
+
+    <main>
+        <section>
+            <div>
+                <div class="local-info">
+                    <div class="city-name">MILANO</div>
+                    <div class="title-date">SAT 12 OCT 2020</div>
+                    <div class="hour">18:00</div>
+                    <img class="weather-icon" src="static/img/1.svg" alt="sun">
+                </div>
+                <img class="weather-icon" src="" alt="">
+                <div>
+                    <form>
+                        <button class="search-button black-white">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                        <input class="search white-black" type="text" placeholder="Search a city...">
+                    </form>
+                </div>
+            </div>
+            <div id="more-info-mark">
+                <div>More Info</div>
+                <img class="down-arrow" src="static/img/arrow.svg" alt="more info arrow">
+            </div>
+        </section>
+
+        <section>
+            <div class="days">
+                <div class="day">
+                    <div class="black-yellow"> SUN 14 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+                <div class="day">
+                    <div class="black-white"> MON 15 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+                <div class="day">
+                    <div class="black-white"> TUE 16 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+                <div class="day">
+                    <div class="black-white"> WEN 17 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+                <div class="day">
+                    <div class="black-white"> TUR 18 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+                <div class="day">
+                    <div class="black-white"> TUR 19 </div>
+                    <div class="white-black"><img class="weather-icon" src="static/img/1.svg" alt="sun"></div>
+                    <div class="white-black"> 12<sup>O</sup></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="city-info-section">
+            <div class="city-info white-black">
+                <p>
+                    <span>Milan (Milano)</span><br>City in Italy
+                </p>
+                <hr>
+                <p>
+                    Milan, a metropolis in Italy's northern Lombardy region, is a global capital of fashion and design.
+                    Home to the national stock exchange, it’s a financial hub also known for its high-end restaurants
+                    and shops. The Gothic Duomo di Milano cathedral and the Santa Maria delle Grazie convent, housing
+                    Leonardo da Vinci’s mural “The Last Supper,” testify to centuries of art and culture.
+                </p>
+                <ul class="city-properties">
+                    <li><strong>Area:</strong> 181.8 km²</li>
+                    <li><strong>Elevation:</strong> 120 m</li>
+                    <li><strong>Weather:</strong> 16°C, Wind SE at 5 km/h, 66% Humidity</li>
+                    <li><strong>Population:</strong> 1.352 million (2017)</li>
+                    <li><strong>Province:</strong> Metropolitan City of Milan</li>
+                </ul>
+                <a href="/" class="read-more"> Read More </a>
+            </div>
+            <div class="white-triangle white-black"></div>
+        </section>
+    </main>
+
+    <footer class="black-white"> Its Raining Men </footer>
+</body>
+
+</html>

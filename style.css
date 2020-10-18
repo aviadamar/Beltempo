@@ -1,0 +1,345 @@
+/* General Settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  /* Make box size to be the total width and not till padding*/
+}
+
+html {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 62.5%;  /*16px / 10px = 62.5% -> 1rem = 10px*/
+    line-height: 1.7;
+    color: #231F20;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    font-size: 1.4rem;
+}
+
+sup {
+    font-size: 1rem;
+    padding-left: 0.2rem;
+}
+
+.info-text {
+    padding: 2rem 15% 2rem 15%;
+}
+
+
+/* -- Navigation Bar -- */
+nav {
+    position: sticky;
+    top: 0;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5rem auto;
+}
+
+.one-on-two{
+    grid-column: 1/3;
+}
+
+nav header {
+    padding-left: 2rem;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+nav img {
+    justify-self: right;
+    padding-right: 2rem;
+    height: 2rem;
+}
+
+nav img:hover {
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    
+    justify-self: center;
+    width: 100%;
+
+    list-style-type: none;
+    padding: 0 15% 0 15%;
+}
+
+nav li {
+    width: 33%;
+    /* flex: 1; */
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+nav li:hover{
+    background-color: white;
+    color: black;
+    font-weight: 700;
+}
+
+#why,
+#how,
+#who,
+#hidden-menu {
+    display: none;
+}
+
+
+/* -- Sections -- */
+
+section {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+/* Local info section */
+
+.local-info {
+    padding-top: 14rem;
+    color: white;
+    padding-top: -2rem;
+}
+
+.city-name,
+.hour {
+    line-height: 4rem;
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hour {
+    padding-top: 1rem;
+}
+
+.title-date {
+    line-height: 2.2rem;
+    font-size: 2rem;
+}
+
+/* Form */
+
+.search,
+.search-button {
+
+    border: 0;
+    padding: 0.5rem;
+    height: 4rem;
+    vertical-align: middle;
+    
+}
+
+.search[type=text] {
+    width: 40rem;
+    font-size: 2rem;
+    border-radius: 0 .5rem .5rem 0;
+}
+
+::placeholder {
+    color: #B7B7B7;
+}
+
+.search-button {
+    font-size: 3rem;
+    border-radius: .5rem 0 0 .5rem ;
+}
+
+ion-icon {
+    color: white;
+}
+
+@keyframes flying {
+    from {bottom: 5vh;}
+    to {bottom: 4vh;}
+  }
+
+#more-info-mark {
+    display: block;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 1.6rem;
+    
+    animation-name: flying;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.down-arrow {
+    width: 8rem;
+}
+
+/* Days sections */
+
+.days {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.day {
+    flex: 1;
+    flex-basis:0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.weather-icon {
+    margin-top: 2rem;
+    height: 6rem;
+}
+
+.days:first-child + div {
+    line-height: 20rem;
+}
+
+/* City Info Section */
+
+.city-info,
+.white-triangle {
+    width: 50%;
+    margin: auto;
+
+}
+
+.city-info {
+    height: 56%;
+    overflow-y: auto;
+}
+
+.white-triangle {
+    height: 10%;
+    clip-path: polygon(80% 0, 100% 0, 100% 100%);
+}
+
+.city-info {
+    text-align: left;
+    padding: 3rem 5rem 3rem 5rem;
+}
+
+.city-properties {
+    padding: 2rem 0 1rem 0;
+    text-align: left;
+    font-size: 1.4rem;
+    list-style-type: none;
+}
+
+hr {
+    border: 1px solid  #E6E7E8;
+    margin: 1rem 0 1rem 0;
+}
+
+p span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.read-more {
+    font-size: 1.4rem;
+    color: red;
+    padding-bottom: 3rem;
+}
+/* -- Footer -- */
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: auto 0 auto 0;
+}
+
+/* Colors Manager */
+
+.white-black {
+    color: #231F20;
+    background-color: white;
+}
+
+.black-white {
+    color: white;
+    background-color: #231F20;
+}
+
+.black-yellow {
+    color: yellow;
+    background-color: #231F20;
+}
+
+.sun {
+    background-color: #FEF3A0;
+}
+
+.clouds {
+    background-color: #94D8F2;
+}
+
+.rain {
+    background-color: #E6E7E8;
+}
+
+.storm {
+    background-color: #808284;
+}
+
+@keyframes rain {
+    from {
+        top: 0;
+        left: 50vh;
+    }
+
+    to {
+        top:300vh;
+        left: 50vh;
+    }
+
+}
+
+
+
+/* will create spacing in case of touchscreen*/
+@media (pointer: Coarse), (max-width: 60em) { 
+    nav ul {
+        padding: 0 2rem 0 2rem;
+    }
+
+    .day {
+        flex-basis: 33%;
+    }
+
+    .search[type=text] {
+        width: 70%;
+  }
+
+  .city-info-section,
+  .city-info,
+  .white-triangle {
+    width: 100%;
+  }
+}
+
+.rain-drop {
+    position: absolute;
+    height: 1.5rem;
+    width: 0;
+    border: 2px solid black;
+
+    animation-name: rain;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
