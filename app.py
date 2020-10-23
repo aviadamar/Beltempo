@@ -15,3 +15,7 @@ def index():
         backend.is_location(location)
     info = backend.setting_info(location)
     return render_template("index.html", info=info)
+
+
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
