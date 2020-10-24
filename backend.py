@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 import re
-import requests
 
 from countryinfo import CountryInfo
 from decouple import config
@@ -10,6 +9,7 @@ from geopy.geocoders import Nominatim
 from geotext import GeoText
 import pycountry
 import pytz
+import requests
 import wikipedia
 
 
@@ -104,12 +104,9 @@ def get_location_latlon(location):
 # Times
 def get_timezone(capital):
     """Return timezone code by capital."""
-    try:
-        for tzone in pytz.all_timezones:
-            if capital in tzone:
-                return tzone
-    except UnknownTimeZoneError:
-        return 'Etc/Greenwich'
+    for tzone in pytz.all_timezones:
+        if capital in tzone:
+            return tzone
 
 
 def get_local_time(country):
@@ -146,7 +143,6 @@ def get_pattern(pattern, text):
 def get_theme(day):
     """Returns css theme name according to current weather."""
     day = day.lower()
-    themes = ('sun', 'rain', 'clouds', 'storm')
     if day in ('clear sky', 'few clouds', 'isolated clouds'):
         return 'sun'
     if day in ('broken clouds', 'overcast clouds', 'scattered clouds', 'few clouds'):
@@ -171,8 +167,8 @@ def get_days_info(location):
     description_list = [str(i).split('"')[3] for i in matches]
     evarage_temp = [round((float(j.group(1)) + float(j.group(2))) / 2)
                     for j in matches2]
-    match_pic = [get_theme(description) +
-                 ".svg" for description in description_list]
+    match_pic = [get_theme(description)
+                 + ".svg" for description in description_list]
 
     info = list(zip(description_list, evarage_temp, match_pic))
     del info[0]

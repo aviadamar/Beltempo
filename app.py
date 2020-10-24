@@ -14,7 +14,7 @@ def index():
         location = backend.get_location_by_ip()
     print("LOCATION:", location)
     info = backend.setting_info(location)
-    return render_template("index.html", info=info)
+    return render_template("index.j2", info=info)
 
 
 if __name__ == '__main__':

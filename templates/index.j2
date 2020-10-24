@@ -75,6 +75,7 @@
 
     <main>
         <section>
+            <h1 class="hidden"> Current weather in Milano </h1>
             <div>
                 <div class="local-info">
                     <div class="city-name"> {{ info['city'] }} </div>
@@ -101,6 +102,7 @@
         </section>
 
         <section class="days-section">
+            <h1 class="hidden"> Weather prediction in Milano - next 6 days </h1>
             <div class="days">
                 {% for date in info['all_days_info'] %}
                 <div class="day">
@@ -122,6 +124,7 @@
         </section>
 
         <section class="city-info-section">
+            <h1 class="hidden"> About Milano </h1>
             <div class="city-info white-black">
                 <p>
                     <span>{{ info['city'] }} </span><br>City in {{ info['country'] }}
