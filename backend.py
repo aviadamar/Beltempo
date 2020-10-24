@@ -1,32 +1,24 @@
 from datetime import datetime, timedelta
-from flask import request
 import re
 import requests
 
-from decouple import config
-import wikipedia
 from countryinfo import CountryInfo
+from decouple import config
+from flask import request
 import geocoder
 from geopy.geocoders import Nominatim
 from geotext import GeoText
 import pycountry
 import pytz
+import wikipedia
 
-WEATHER = config('WEATHER')
 
-
-def get_file_info(file_name):
-    """Returns text file info."""
-    try:
-        with open(file_name, 'r') as file:
-            return file.read()
-    except (FileNotFoundError, ermissionError) as err:
-        print(err)
+WEATHER = config("WEATHER")
 
 
 def get_ip():
     """Returns device ip."""
-    # by: Tirtha R, https://stackoverflow.com/questions/3759981/get-ip-address-of-visitors-using-flask-for-python
+    # By Tirtha R: https://stackoverflow.com/questions/3759981/get-ip-address-of-visitors-using-flask-for-python
     if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
         return request.environ['REMOTE_ADDR']
     else:
@@ -35,10 +27,15 @@ def get_ip():
 
 def get_location_by_ip():
     """Returns geo information of a decive according to this ip address."""
-    geo = geocoder.ip(get_ip())
-    location = {'lat': geo.lat, 'lon': geo.lng, 'city': geo.city,
-                'country': pycountry.countries.get(alpha_2=geo.country).name}
-    return location
+    ip = get_ip()
+    geo = geocoder.ip(ip)
+    if geo.lat is None:
+        return {'lat': 51.5074, 'lon': 0.1278,
+                'city': 'London', 'country': 'United Kingdom'}
+    else:
+        location = {'lat': geo.lat, 'lon': geo.lng, 'city': geo.city,
+                    'country': pycountry.countries.get(alpha_2=geo.country).name}
+        return location
 
 
 def get_location_by_name(name):
@@ -136,7 +133,9 @@ def get_weather(lat, lon):
     querystring = {"lat": lat, "lon": lon}
     headers = {
         'x-rapidapi-host': "weatherbit-v1-mashape.p.rapidapi.com",
-        'x-rapidapi-key': WEATHER}
+        # 'x-rapidapi-key': get_file_info("weather.txt")
+        'x-rapidapi-key': WEATHER,
+    }
     return requests.request("GET", url, headers=headers, params=querystring).text
 
 
@@ -201,4 +200,6 @@ def setting_info(location):
         'wiki_url': location_wiki_info['url'],
         'theme': get_theme(today_info[0]),
     }
+
+    print(info)
     return info

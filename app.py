@@ -12,7 +12,7 @@ def index():
         location = backend.get_location_by_name(place)
     else:
         location = backend.get_location_by_ip()
-        backend.is_location(location)
+    print("LOCATION:", location)
     info = backend.setting_info(location)
     return render_template("index.html", info=info)
 
