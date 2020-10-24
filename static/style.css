@@ -27,6 +27,7 @@ sup {
     padding-left: 0.2rem;
 }
 
+
 .info-text {
     padding: 2rem 15% 2rem 15%;
 }
@@ -322,31 +323,6 @@ footer div {
 .storm {
     background-color: #808284;
 }
-
-
-/* @keyframes rain {
-    from {
-        top: 0;
-        left: 50vh;
-    }
-
-    to {
-        top:300vh;
-        left: 50vh;
-    }
-
-}
-
-.rain-drop {
-    position: absolute;
-    height: 1.5rem;
-    width: 0;
-    border: 2px solid black;
-
-    animation-name: rain;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-} */
 
 @media (pointer: Coarse), (max-width: 60em) { 
     nav ul {
