@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import re
 import requests
 
+from boto.s3.connection import S3Connection
 from countryinfo import CountryInfo
 from decouple import config
 from flask import request
@@ -14,6 +15,7 @@ import wikipedia
 
 
 WEATHER = config("WEATHER")
+s3 = S3Connection(WEATHER)
 
 
 def get_ip():
@@ -133,7 +135,6 @@ def get_weather(lat, lon):
     querystring = {"lat": lat, "lon": lon}
     headers = {
         'x-rapidapi-host': "weatherbit-v1-mashape.p.rapidapi.com",
-        # 'x-rapidapi-key': get_file_info("weather.txt")
         'x-rapidapi-key': WEATHER,
     }
     return requests.request("GET", url, headers=headers, params=querystring).text
