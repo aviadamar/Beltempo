@@ -101,12 +101,9 @@ def get_location_latlon(location):
 # Times
 def get_timezone(capital):
     """Return timezone code by capital."""
-    try:
-        for tzone in pytz.all_timezones:
-            if capital in tzone:
-                return tzone
-    except UnknownTimeZoneError:
-        return 'Etc/Greenwich'
+    for tzone in pytz.all_timezones:
+        if capital in tzone:
+            return tzone
 
 
 def get_local_time(country):
