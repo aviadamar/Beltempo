@@ -2,7 +2,6 @@ from datetime import datetime, timedelta
 import re
 import requests
 
-from boto.s3.connection import S3Connection
 from countryinfo import CountryInfo
 from decouple import config
 from flask import request
@@ -15,7 +14,6 @@ import wikipedia
 
 
 WEATHER = config("WEATHER")
-s3 = S3Connection(WEATHER)
 
 
 def get_ip():
@@ -28,7 +26,7 @@ def get_ip():
 
 
 def get_location_by_ip():
-    """Returns geo information of a decive according to this ip address."""
+    """Returns geo information of a device according to this ip address."""
     ip = get_ip()
     geo = geocoder.ip(ip)
     if geo.lat is None:
