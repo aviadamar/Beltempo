@@ -3,6 +3,7 @@ from flask import request
 import re
 import requests
 
+from decouple import config
 import wikipedia
 from countryinfo import CountryInfo
 import geocoder
@@ -23,7 +24,11 @@ def get_file_info(file_name):
 
 def get_ip():
     """Returns device ip."""
-    return request.environ['REMOTE_ADDR']
+    # by: Tirtha R, https://stackoverflow.com/questions/3759981/get-ip-address-of-visitors-using-flask-for-python
+    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        return request.environ['REMOTE_ADDR']
+    else:
+        return request.environ['HTTP_X_FORWARDED_FOR']  # if behind a proxy
 
 
 def get_location_by_ip():
@@ -100,9 +105,12 @@ def get_location_latlon(location):
 # Times
 def get_timezone(capital):
     """Return timezone code by capital."""
-    for tzone in pytz.all_timezones:
-        if capital in tzone:
-            return tzone
+    try:
+        for tzone in pytz.all_timezones:
+            if capital in tzone:
+                return tzone
+    except UnknownTimeZoneError:
+        return 'Etc/Greenwich'
 
 
 def get_local_time(country):
@@ -126,8 +134,7 @@ def get_weather(lat, lon):
     querystring = {"lat": lat, "lon": lon}
     headers = {
         'x-rapidapi-host': "weatherbit-v1-mashape.p.rapidapi.com",
-        'x-rapidapi-key': get_file_info("weather.txt")
-    }
+        'x-rapidapi-key': os.}
     return requests.request("GET", url, headers=headers, params=querystring).text
 
 
