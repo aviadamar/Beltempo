@@ -23,8 +23,7 @@ def get_file_info(file_name):
 
 def get_ip():
     """Returns device ip."""
-    # return request.environ['REMOTE_ADDR']
-    return "2.36.167.166"
+    return request.environ['REMOTE_ADDR']
 
 
 def get_location_by_ip():
