@@ -12,6 +12,8 @@ from geotext import GeoText
 import pycountry
 import pytz
 
+WEATHER = config('WEATHER')
+
 
 def get_file_info(file_name):
     """Returns text file info."""
@@ -134,7 +136,7 @@ def get_weather(lat, lon):
     querystring = {"lat": lat, "lon": lon}
     headers = {
         'x-rapidapi-host': "weatherbit-v1-mashape.p.rapidapi.com",
-        'x-rapidapi-key': os.}
+        'x-rapidapi-key': WEATHER}
     return requests.request("GET", url, headers=headers, params=querystring).text
 
 
