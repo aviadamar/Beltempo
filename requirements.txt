@@ -10,6 +10,7 @@ future==0.18.2
 geocoder==1.38.1
 geographiclib==1.50
 geopy==2.0.0
+geotext==0.4.0
 gunicorn==20.0.4
 idna==2.10
 itsdangerous==1.1.0
@@ -17,6 +18,7 @@ Jinja2==2.11.2
 MarkupSafe==1.1.1
 pycodestyle==2.6.0
 pycountry==20.7.3
+pytz==2020.1
 ratelim==0.1.6
 requests==2.24.0
 six==1.15.0
