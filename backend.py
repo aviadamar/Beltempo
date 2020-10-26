@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import json
 import re
 
 from countryinfo import CountryInfo
@@ -6,7 +7,6 @@ from decouple import config
 from flask import request
 import geocoder
 from geopy.geocoders import Nominatim
-from geotext import GeoText
 import pycountry
 import pytz
 import requests
@@ -38,17 +38,50 @@ def get_location_by_ip():
         return location
 
 
+def get_countries_json():
+    """Returns countries cities information from file."""
+    # Credit: Project by russ666 Tlicensed under the MIT License https://github.com/russ666/all-countries-and-cities-json
+    path = r"countries.json"
+    with open(path) as json_file:
+        return json.load(json_file)
+
+
+def is_country(name, countries):
+    """Check if a given name is country."""
+    return name in countries
+
+
+def cities_generator(countries):
+    """Returns all main cities in the world."""
+    for country, cities in countries.items():
+        for city in cities:
+            yield city, country
+
+
+def is_city(name, countries):
+    """Checks if given name is city and returns its country."""
+    for city, country in cities_generator(countries):
+        if name == city:
+            return city, country
+    return None
+
+
 def get_location_by_name(name):
     """Get location information by given name."""
     location = {'lat': None, 'lon': None, 'city': None, 'country': None}
-    if is_country(name):
+    name = name.title()
+    countries = get_countries_json()
+
+    if is_country(name, countries):
         location['country'] = name.title()
         location['city'] = get_capital(name)
-    elif is_city(name):
-        location['city'] = name.title()
-        location['country'] = find_country(name)
     else:
-        is_location(location)
+        city = is_city(name, countries)
+        if city:
+            location['city'] = city[0]
+            location['country'] = city[1]
+        else:
+            location = default_location()
     location['lat'], location['lon'] = get_location_latlon(
         f"{location['city']} {location['country']}")
     return location
@@ -59,33 +92,9 @@ def get_location_summary(location):
     return {'url': wikipedia.page(location).url, 'summary': wikipedia.summary(location, chars=1000)}
 
 
-def is_location(location, dcity="London", dcountry="United Kingdom"):
-    """Checks if we got a valid location from ip.
-
-    In case of invalid location the function will insert a defaults values.
-    """
-    if location['city'] is None or location['country'] is None:
-        location['city'], location['country'] = dcity, dcountry
-    return None
-
-
-def is_country(name):
-    """Checks if a given name represent a country."""
-    check = pycountry.countries.get(name=name)
-    return check is not None
-
-
-def is_city(name):
-    """Checks if a given name is a city"""
-    places = GeoText(name.title())
-    return len(places.cities) > 0
-
-
-def find_country(city):
-    """finds the country of a given city."""
-    search = city
-    result = GeoText(wikipedia.summary(search, sentences=3))
-    return result.countries.pop(0)
+def default_location(dcity="London", dcountry="United Kingdom"):
+    """Return a default value for location."""
+    return {'lat': None, 'lon': None, 'city': dcity, 'country': dcountry}
 
 
 def get_capital(country):
@@ -102,17 +111,19 @@ def get_location_latlon(location):
 
 
 # Times
-def get_timezone(capital):
+def get_timezone(capital, country):
     """Return timezone code by capital."""
     for tzone in pytz.all_timezones:
-        if capital in tzone:
+        p = tzone.partition('/')
+        if capital in p or country in p:
             return tzone
+    return 'Europe/London'
 
 
 def get_local_time(country):
     """Returns time at user location."""
-    capital = get_capital(country)
-    user_time_zone = get_timezone(capital)
+    capital = get_capital(country).title()
+    user_time_zone = get_timezone(capital, country)
     t = pytz.timezone(user_time_zone)
     date = t.localize(datetime.now())
     return date
@@ -182,7 +193,7 @@ def setting_info(location):
     today_info = all_days_info.pop(0)
     time = get_local_time(location['country'])
     next_days_dates = get_next_days(7, time)
-    location_wiki_info = get_location_summary(location['city'])
+    location_wiki_info = get_location_summary(f"{location['city']}")
 
     info = {
         'city': location['city'],
@@ -196,5 +207,4 @@ def setting_info(location):
         'theme': get_theme(today_info[0]),
     }
 
-    print(info)
     return info

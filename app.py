@@ -12,7 +12,6 @@ def index():
         location = backend.get_location_by_name(place)
     else:
         location = backend.get_location_by_ip()
-    print("LOCATION:", location)
     info = backend.setting_info(location)
     return render_template("index.j2", info=info)
 
