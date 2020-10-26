@@ -13,6 +13,7 @@ geopy==2.0.0
 geotext==0.4.0
 gunicorn==20.0.4
 idna==2.10
+ipstack==0.1.4
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
@@ -23,6 +24,7 @@ pytz==2020.1
 ratelim==0.1.6
 requests==2.24.0
 six==1.15.0
+sockets==1.0.0
 soupsieve==2.0.1
 toml==0.10.1
 urllib3==1.25.11
