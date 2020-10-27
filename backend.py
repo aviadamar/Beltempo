@@ -125,7 +125,7 @@ def get_local_time(country):
     capital = get_capital(country).title()
     user_time_zone = get_timezone(capital, country)
     t = pytz.timezone(user_time_zone)
-    date = t.localize(datetime.now())
+    date = datetime.now(t)
     return date
 
 
