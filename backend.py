@@ -187,6 +187,16 @@ def get_days_info(location):
     return info
 
 
+def sentences(theme):
+    s = {
+        'sun': "Here Comes The Sun",
+        'clouds': "There Is No Sunshine When She is Gone",
+        'rain': "It's Raining Men",
+        'storm': ""
+    }
+    return s[theme]
+
+
 def setting_info(location):
     """Setting all information dict according to given location."""
 
@@ -195,6 +205,7 @@ def setting_info(location):
     time = get_local_time(location['country'])
     next_days_dates = get_next_days(7, time)
     location_wiki_info = get_location_summary(location)
+    theme = get_theme(today_info[0])
 
     info = {
         'city': location['city'],
@@ -205,7 +216,8 @@ def setting_info(location):
         'all_days_info': list(zip(next_days_dates, all_days_info)),
         'summary': location_wiki_info['summary'],
         'wiki_url': location_wiki_info['url'],
-        'theme': get_theme(today_info[0]),
+        'theme': theme,
+        'sentence': sentences(theme),
     }
 
     return info
