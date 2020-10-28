@@ -89,7 +89,8 @@ def get_location_by_name(name):
 
 def get_location_summary(location):
     """Returns wikipedia summary for value."""
-    return {'url': wikipedia.page(location).url, 'summary': wikipedia.summary(location, chars=1000)}
+    search = f"{location['city']} city in {location['country']}"
+    return {'url': wikipedia.page(location).url, 'summary': wikipedia.summary(search, chars=1000)}
 
 
 def default_location(dcity="London", dcountry="United Kingdom"):
@@ -193,7 +194,7 @@ def setting_info(location):
     today_info = all_days_info.pop(0)
     time = get_local_time(location['country'])
     next_days_dates = get_next_days(7, time)
-    location_wiki_info = get_location_summary(f"{location['city']}")
+    location_wiki_info = get_location_summary(location)
 
     info = {
         'city': location['city'],
