@@ -23,7 +23,7 @@
 
 <body class="{{ info['theme'] }}">
     <nav class="{{ info['theme'] }}">
-        <a href="#">
+        <a href="/">
             <header> BELTEMPO. </header>
         </a>
 
@@ -44,20 +44,15 @@
             quam
             temporibus quos! Iure consequuntur perspiciatis nihil officiis quasi!
         </p>
-        <p class="white-black one-on-two info-text" id="how">This website backend engine is using:
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet necessitatibus magni aliquid
-            ullam
-            repellat
-            quidem sed quis quo inventore optio iusto neque voluptas corrupti doloremque ratione,
-            pariatur nam
-            nobis
-            fuga, quam odit alias laboriosam nihil. Quidem necessitatibus temporibus, unde optio hic
-            maiores
-            atque
-            eligendi harum fugiat laborum nemo, et neque, officiis omnis commodi ipsum exercitationem?><br>
-
-            Credits: Rapid Api: Weather
-        </p>
+        <div class="white-black one-on-two info-text" id="how">
+            <p> The "Beltempo" project is written by several programming languages such as: HTML, CSS and JS for the
+                frontend and
+                Python for the back end.<br>
+                Beltempo drives its weather information from:<br>
+                Wheater API: <a href="https://thenounproject.com/mikicon/collection/weather-forecast/?i=729232"
+                    target="_blank" class="read-more">Rapid Api, Weather</a>
+            </p>
+        </div>
         <p class="white-black one-on-two info-text" id="who">
             <img class="profile-pic" src="static/img/pp.png" alt="web author picture">
 
@@ -81,9 +76,11 @@
                     <div class="city-name"> {{ info['city'] }} </div>
                     <div class="title-date">{{ info['date'] }}</div>
                     <div class="hour">{{ info['time'] }}</div>
-                    <img class="weather-icon" src="static/img/{{ info['today'][2] }}" alt="{{ info['today'][0] }}"
+                    <img class="weather-icon" src="static/img/{{ info['today'][3] }}" alt="{{ info['today'][0] }}"
                         title="{{ info['today'][0] }}">
-                    <div class="title-date">{{ info['today'][1] }}<sup>O</sup></div>
+                    <div class="title-date">MIN {{ info['today'][1] }}<sup>O</sup> MAX
+                        {{ info['today'][2] }}<sup>O</sup>
+                    </div>
                 </div>
                 <div>
                     <form action="{{ url_for('index') }}" method="POST">
@@ -114,10 +111,11 @@
                             {{ date[0][0] }} {{ date[0][1] }}
                         </div>
                         <div class="white-black">
-                            <img class="weather-icon" src="static/img/{{ date[1][2] }}" alt="{{ date[1][0] }}"
+                            <img class="weather-icon" src="static/img/{{ date[1][3] }}" alt="{{ date[1][0] }}"
                                 title="{{ date[1][0] }}">
                         </div>
-                        <div class="white-black"> {{ date[1][1] }}<sup>O</sup></div>
+                        <div class="white-black">MIN {{ info['today'][1] }}<sup>O</sup></div>
+                        <div class="white-black">MAX {{ info['today'][2] }}<sup>O</sup></div>
                     </div>
                     {% endfor %}
                 </div>

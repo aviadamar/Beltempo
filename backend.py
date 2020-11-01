@@ -177,12 +177,12 @@ def get_days_info(location):
     matches2 = get_pattern(r'"low_temp":(\d*\.?\d?),"max_temp":(\d*\.?\d?)', r)
 
     description_list = [str(i).split('"')[3] for i in matches]
-    evarage_temp = [round((float(j.group(1)) + float(j.group(2))) / 2)
-                    for j in matches2]
+    low = [round(float(j.group(1))) for j in matches2]
+    maxi = [round(float(j.group(2))) for j in matches2]
     match_pic = [get_theme(description)
                  + ".svg" for description in description_list]
 
-    info = list(zip(description_list, evarage_temp, match_pic))
+    info = list(zip(description_list, low, maxi, match_pic))
     del info[0]
     return info
 
@@ -219,5 +219,8 @@ def setting_info(location):
         'theme': theme,
         'sentence': sentences(theme),
     }
+
+    print(info['today'])
+    print(info['all_days_info'])
 
     return info

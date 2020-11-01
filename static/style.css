@@ -131,7 +131,6 @@ section {
 
 .local-info {
     padding-top: 8rem;
-    color: white;
 }
 
 .city-name,
@@ -146,6 +145,7 @@ section {
 }
 
 .title-date {
+    padding-top: 0.6rem;
     line-height: 2.2rem;
     font-size: 2rem;
 }
@@ -313,18 +313,22 @@ footer div {
 
 .sun {
     background-color: #FEF3A0;
+    color: #231F20;
 }
 
 .clouds {
     background-color: #94D8F2;
+    color: white;
 }
 
 .rain {
     background-color: #E6E7E8;
+    color: white;
 }
 
 .storm {
     background-color: #808284;
+    color: white;
 }
 
 @media (pointer: Coarse), (max-width: 60em) { 
