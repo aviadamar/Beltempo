@@ -48,6 +48,10 @@ sup {
     margin: 0 1rem 0 0;
 }
 
+#logo {
+    color: #231F20;
+}
+
 /* -- Navigation Bar -- */
 nav {
     position: sticky;
@@ -98,7 +102,7 @@ nav li {
 
 nav li:hover{
     background-color: white;
-    color: black;
+    color: #231F20;
     font-weight: 700;
 }
 
@@ -192,7 +196,7 @@ ion-icon {
 #more-info-mark {
     display: block;
     position: absolute;
-    bottom: 5vh;
+    bottom: 3vh;
     left: 50%;
     transform: translate(-50%, -50%);
 
