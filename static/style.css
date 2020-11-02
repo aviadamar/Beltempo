@@ -124,7 +124,7 @@ section {
 }
 
 .days-section {
-    height: 70vh;
+    height: 80vh;
 }
 
 .city-info-section {
@@ -196,6 +196,7 @@ ion-icon {
 #more-info-mark {
     display: block;
     position: absolute;
+    color: #231F20;
     bottom: 3vh;
     left: 50%;
     transform: translate(-50%, -50%);

@@ -220,7 +220,4 @@ def setting_info(location):
         'sentence': sentences(theme),
     }
 
-    print(info['today'])
-    print(info['all_days_info'])
-
     return info
